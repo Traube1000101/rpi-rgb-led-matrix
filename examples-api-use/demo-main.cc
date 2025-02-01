@@ -317,7 +317,7 @@ public:
         // No scrolling. We don't need the image anymore.
         current_image_.Delete();
       } else {
-        usleep(scroll_ms_ * 1000);
+        usleep(scroll_ms_);
       }
     }
   }
