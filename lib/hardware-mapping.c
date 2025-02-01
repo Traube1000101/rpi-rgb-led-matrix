@@ -67,6 +67,30 @@ struct HardwareMapping matrix_hardware_mappings[] = {
   },
 
   /*
+   * Custom mapping
+   */
+  {
+    .name          = "custom",
+
+    .output_enable = GPIO_BIT(24),
+    .clock         = GPIO_BIT(25),
+    .strobe        = GPIO_BIT(11),
+
+    .a             = GPIO_BIT(7),
+    .b             = GPIO_BIT(6),
+    .c             = GPIO_BIT(8),
+    .d             = GPIO_BIT(5),
+    .e             = GPIO_BIT(13),
+
+    .p0_r1         = GPIO_BIT(21),
+    .p0_g1         = GPIO_BIT(26),
+    .p0_b1         = GPIO_BIT(20),
+    .p0_r2         = GPIO_BIT(16),
+    .p0_g2         = GPIO_BIT(19),
+    .p0_b2         = GPIO_BIT(12),
+  },
+
+  /*
    * This is used if you have an Adafruit HAT in the default configuration
    */
   {
