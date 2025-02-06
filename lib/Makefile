@@ -4,10 +4,6 @@
 #   -lrgbmatrix
 ##
 
-CC=arm-linux-gnueabihf-gcc
-CXX=arm-linux-gnueabihf-g++
-AR=arm-linux-gnueabihf-ar
-
 OBJECTS=gpio.o led-matrix.o options-initialize.o framebuffer.o \
         thread.o bdf-font.o graphics.o led-matrix-c.o hardware-mapping.o \
         pixel-mapper.o multiplex-mappers.o \

@@ -1,7 +1,3 @@
-CC=arm-linux-gnueabihf-gcc
-CXX=arm-linux-gnueabihf-g++
-AR=arm-linux-gnueabihf-ar
-
 CFLAGS=-Wall -O3 -g -Wextra -Wno-unused-parameter -mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard
 CXXFLAGS=$(CFLAGS)
 OBJECTS=demo-main.o minimal-example.o c-example.o text-example.o scrolling-text-example.o clock.o ledcat.o input-example.o pixel-mover.o
