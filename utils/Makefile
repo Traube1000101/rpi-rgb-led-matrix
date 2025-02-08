@@ -5,11 +5,13 @@ BINARIES=led-image-viewer text-scroller
 OPTIONAL_OBJECTS=video-viewer.o
 OPTIONAL_BINARIES=video-viewer
 
+OUTDIR=../out
+
 # Where our library resides. You mostly only need to change the
 # RGB_LIB_DISTRIBUTION, this is where the library is checked out.
-RGB_LIB_DISTRIBUTION=..
+RGB_LIB_DISTRIBUTION=../lib
 RGB_INCDIR=$(RGB_LIB_DISTRIBUTION)/include
-RGB_LIBDIR=$(RGB_LIB_DISTRIBUTION)/lib
+RGB_LIBDIR=$(RGB_LIB_DISTRIBUTION)/src
 RGB_LIBRARY_NAME=rgbmatrix
 RGB_LIBRARY=$(RGB_LIBDIR)/lib$(RGB_LIBRARY_NAME).a
 RGB_LDFLAGS+=-L$(RGB_LIBDIR) -l$(RGB_LIBRARY_NAME) -lrt -lm -lpthread
@@ -28,13 +30,13 @@ $(RGB_LIBRARY): FORCE
 	$(MAKE) -C $(RGB_LIBDIR)
 
 text-scroller: text-scroller.o $(RGB_LIBRARY)
-	$(CXX) $(CXXFLAGS) text-scroller.o -o $@ $(LDFLAGS) $(RGB_LDFLAGS)
+	$(CXX) $(CXXFLAGS) text-scroller.o -o $(OUTDIR)/$@ $(LDFLAGS) $(RGB_LDFLAGS)
 
 led-image-viewer: led-image-viewer.o $(RGB_LIBRARY)
-	$(CXX) $(CXXFLAGS) led-image-viewer.o -o $@ $(LDFLAGS) $(RGB_LDFLAGS) $(MAGICK_LDFLAGS)
+	$(CXX) $(CXXFLAGS) led-image-viewer.o -o $(OUTDIR)/$@ $(LDFLAGS) $(RGB_LDFLAGS) $(MAGICK_LDFLAGS)
 
 video-viewer: video-viewer.o $(RGB_LIBRARY)
-	$(CXX) $(CXXFLAGS) video-viewer.o -o $@ $(LDFLAGS) $(RGB_LDFLAGS) $(AV_LDFLAGS)
+	$(CXX) $(CXXFLAGS) video-viewer.o -o $(OUTDIR)/$@ $(LDFLAGS) $(RGB_LDFLAGS) $(AV_LDFLAGS)
 
 %.o : %.cc
 	$(CXX) -I$(RGB_INCDIR) $(CXXFLAGS) -c -o $@ $<
