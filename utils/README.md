@@ -1,5 +1,4 @@
-Utilities
-=========
+# Utilities
 
 This contains useful utilities that might be directly useful without having
 to write any code.
@@ -42,9 +41,10 @@ the [toplevel readme](../README.md#changing-parameters-via-command-line-flags)
  --led-drop-priv-user      : Drop privileges to this username or UID (Default: 'daemon')
  --led-drop-priv-group     : Drop privileges to this groupname or GID (Default: 'daemon')
 ```
+
 </details>
 
-### Image Viewer ###
+### Image Viewer
 
 The image viewer reads all kinds of image formats, including animated gifs.
 
@@ -69,6 +69,7 @@ make led-image-viewer
 ##### Usage
 
 The resulting binary has a couple of flags.
+
 ```
 usage: ./led-image-viewer [options] <image> [option] [<image> ...]
 Options:
@@ -142,11 +143,12 @@ sudo ./led-image-viewer -f -w3 -t5 image.png animated.gif
 sudo ./led-image-viewer --led-rows=32 --led-chain=4 --led-parallel=3 animation-out.stream
 ```
 
-### Text Scroller ###
+### Text Scroller
 
 The text scroller allows to show some scrolling text.
 
 ##### Building
+
 ```
 make text-scroller
 ```
@@ -222,7 +224,7 @@ sudo ./text-scroller -f ../fonts/9x18.bdf -B0,0,255 -O0,0,100 -C255,0,0 --led-ch
 sudo ./text-scroller -f ../fonts/texgyre-27.bdf --led-chain=4 -y-11 "Large Font"
 ```
 
-### Video Viewer ###
+### Video Viewer
 
 The video viewer allows to play common video formats on the RGB matrix (just
 the picture, no sound).
@@ -239,24 +241,25 @@ in best quality as all the expensive calculation has been done beforehand.
 
 Short of that, if you want to use the video viewer directly (e.g. because the
 stream file would be super-large), do the following when you observe flicker:
-  - Use the `-T` option to add more decode threads; `-T2` or `-T3` typically.
-  - Transcode the video first to the width and height of the final output size
-    so that decoding and scaling is much cheaper at runtime.
-  - If you use tools such as [youtube-dl] to acquire the video, tell it
-    to choose a low resolution version (e.g. for that program use option
-    `-f"[height<480]"`).
-  - Synchronize output as integer fraction of matrix refresh rate (example
-    below).
-  - Another route to watch videos is to run a [flaschen-taschen]
-    server on your Pi, that provides a network interface to your LED-Matrix.
-    Now, you can use [vlc] from some other computer on your network and
-    stream the output to your Pi.
-    You have to provide the IP address and size of the panel:
-    ```
-      vlc --vout flaschen --flaschen-display=<IP-address-of-your-pi> \
-           --flaschen-width=128 --flaschen-height=64 \
-           <video-filename-or-YouTube-URL>
-    ```
+
+- Use the `-T` option to add more decode threads; `-T2` or `-T3` typically.
+- Transcode the video first to the width and height of the final output size
+  so that decoding and scaling is much cheaper at runtime.
+- If you use tools such as [youtube-dl] to acquire the video, tell it
+  to choose a low resolution version (e.g. for that program use option
+  `-f"[height<480]"`).
+- Synchronize output as integer fraction of matrix refresh rate (example
+  below).
+- Another route to watch videos is to run a [flaschen-taschen]
+  server on your Pi, that provides a network interface to your LED-Matrix.
+  Now, you can use [vlc] from some other computer on your network and
+  stream the output to your Pi.
+  You have to provide the IP address and size of the panel:
+  ```
+    vlc --vout flaschen --flaschen-display=<IP-address-of-your-pi> \
+         --flaschen-width=128 --flaschen-height=64 \
+         <video-filename-or-YouTube-URL>
+  ```
 
 ##### Building
 
