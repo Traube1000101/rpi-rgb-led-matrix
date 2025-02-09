@@ -7,21 +7,10 @@ OBJECTS=gpio.o led-matrix.o options-initialize.o framebuffer.o \
 
 TARGET=librgbmatrix
 
-HARDWARE_DESC?=custom
+DEFINES+=-DDISABLE_BUSY_WAITING # Use non blocking delay for the single core rpi
+DEFINES+=-DDEFAULT_HARDWARE=custom # Use custom GPIO layout
+DEFINES+=$(USER_DEFINES) # Add additional make defines
 
-#DEFINES+=-DSHOW_REFRESH_RATE # Flag: --led-show-refresh
-
-#DEFINES+=-DRGB_SCAN_INTERLACED=1 # Flag: --led-scan-mode=1
-
-#DEFINES+=-DLSB_PWM_NANOSECONDS=130 # Flag: --led-pwm-lsb-nanoseconds
-
-#DEFINES+=-DFIXED_FRAME_MICROSECONDS=5000 # Flag: --led-limit-refresh
-
-DEFINES+=-DDISABLE_BUSY_WAITING # Flag: --led-no-busy-waiting
-
-DEFINES+=$(USER_DEFINES)
-
-DEFINES+=-DDEFAULT_HARDWARE='"$(HARDWARE_DESC)"'
 INCDIR=../include
 OUTDIR=../../out
 CFLAGS=-W -Wall -Wextra -Wno-unused-parameter -O3 -g -fPIC $(DEFINES) -mcpu=arm1176jzf-s -mfpu=vfp -mfloat-abi=hard
