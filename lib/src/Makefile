@@ -8,7 +8,7 @@ OBJECTS=gpio.o led-matrix.o options-initialize.o framebuffer.o \
 TARGET=librgbmatrix
 
 DEFINES+=-DDISABLE_BUSY_WAITING # Use non blocking delay for the single core rpi
-DEFINES+=-DDEFAULT_HARDWARE=custom # Use custom GPIO layout
+DEFINES+=-DDEFAULT_HARDWARE='"regular"' # Use regular GPIO layout
 DEFINES+=$(USER_DEFINES) # Add additional make defines
 
 INCDIR=../include
