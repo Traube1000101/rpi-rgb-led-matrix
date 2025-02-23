@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+scp $(ls /home/heizu/Coding/repos/rpi-rgb-led-matrix/out/*) pi:/opt/led-image-viewer
